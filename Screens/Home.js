@@ -1,32 +1,50 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
+
+import Button from '../Components/Button';
+import SignUp from './Sign-up';
+import { useState } from 'react';
 
 const Home = () => {
+
+  const [loading1, setIsLoading1] = useState(false);
+  const [loading2, setIsLoading2] = useState(false);
+
+  function handleButtonPress1(){
+        setIsLoading1(true)
+        console.log('PRessionou')
+        setTimeout(() => {
+          setIsLoading1(false)
+        }, 1000);
+  }
+
+  function handleButtonPress2(){
+    setIsLoading2(true)
+    console.log('PRessionou')
+    setTimeout(() => {
+      setIsLoading2(false)
+    }, 1000);
+}
+
     return (
 
     <View style={styles.container}>
-      <Text style={{color: 'white', fontSize: 55, fontWeight: 'bold'}}>BOOKTOUR</Text>
-      <Text style={{width: 300, color: 'white', fontSize: 20, textAlign: 'center'}}>Explore e organize suas viagens literárias em um só lugar</Text>
-      <View style={{width: 250}}>
-        <Button
-          style={{borderRadius:15, borderWidth:5}}
-          title="INICIAR 1º VIAGEM"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
+      <View style={styles.containerText}>
+        <Text style={{color: 'white', fontSize: 55, fontWeight: 'bold'}}>BOOKTOUR</Text>
+        <Text style={{width: 300, color: 'white',marginTop:"3%", fontSize: 20, textAlign: 'center'}}>Explore e organize suas viagens literárias em um só lugar</Text>
+      </View>
+      <View style={styles.containerButton}>
+        <Button 
+          isLoading={loading1}
+          labelButton='INICIAR 1° VIAGEM' 
+          onpress={handleButtonPress1}
         />
         <Button
-          style={styles.button}
-          title="Já sou viajante"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
+          isLoading={loading2}
+          labelButton="JÁ SOU VIAJANTE"
+          onpress={handleButtonPress2}
         />
       </View>
-      <TextInput
-        style={{backgroundColor: 'black', color: 'white'}}
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-      />
-      <StatusBar style="auto" />
     </View>
   
     );
@@ -34,15 +52,22 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor: "black",
-
+    backgroundColor: "#841584",
+    flex: 1,
+    flexDirection: 'column'
   },
-  button: {
-    backgroundColor: "#0000",
-    borderRadius: 15,
-
+  containerText:{
+    textAlign: 'center',
+    alignItems: 'center',
+    alignContent:'center',
+    marginTop:"80%"
+  },
+  containerButton:{
+    textAlign: 'center',
+    alignItems: 'center',
+    alignContent:'center',
+    marginTop:"60%"
   }
-
 })
 
 

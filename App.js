@@ -47,8 +47,13 @@
 // export default App;
 
 import Home from './Screens/Home'
+import {NavigationContainer} from '@react-navigation/native';
 
 const App = () => {
-  return <Home/>
+  return (
+    <NavigationContainer>
+      <Home/>
+    </NavigationContainer>
+  )
 }
 export default App

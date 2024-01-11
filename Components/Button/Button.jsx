@@ -1,26 +1,20 @@
 import React from "react";
 import { 
-    StyleSheet,
-    ActivityIndicator,
+    StyleSheet, ActivityIndicator,
     Text, 
-    View,
+View,
     TouchableOpacity
 } from 'react-native';
 
 
-const Button = ({labelButton, onpress,isLoading = false}) => {
+const Button = ({labelButton, onpress}) => {
 
     return(
         <TouchableOpacity 
             style={style.button} 
             onPress={onpress}
-            disabled={isLoading}
         >
-            {isLoading ? (
-            <ActivityIndicator color="#FFF"/>
-            ) : (
-            <Text style={style.title}>{labelButton}</Text>
-            )}
+         <Text style={style.title}>{labelButton}</Text>
         </TouchableOpacity>
     )
 }
@@ -30,7 +24,7 @@ export default Button
 const style = StyleSheet.create({
 
     button:{
-        backgroundColor: '#841584',
+        backgroundColor: "#701b9b",
         width:350,
         height: 45,
         justifyContent:'center',
